@@ -9,7 +9,6 @@ class CalculadoraApp extends StatelessWidget {
       title: 'Calculadora Flutter',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-         scaffoldBackgroundColor: const Color.fromARGB(255, 34, 23, 23) // Establece el color de fondo global
         ),
       home: Calculadora(),
       debugShowCheckedModeBanner: false,
@@ -99,45 +98,64 @@ void _presionar(String valor) {
 
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
-              alignment: Alignment.bottomRight,
-              padding: EdgeInsets.all(24),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(_expresion, style: TextStyle(fontSize: 32, color: Colors.white) ),
-                  Text(_resultado, style: TextStyle(fontSize: 48, color: Colors.white, fontWeight: FontWeight.bold)),
-                ],
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: Stack(
+      children: [
+        Positioned.fill(
+          child: Image.asset(
+            'assets/fondo.jpg',
+            fit: BoxFit.cover,
+          ),
+        ),
+        Column(
+          children: [
+            Expanded(
+              child: Container(
+                alignment: Alignment.bottomRight,
+                padding: EdgeInsets.all(24),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      _expresion,
+                      style: TextStyle(fontSize: 32, color: Colors.black),
+                    ),
+                    Text(
+                      _resultado,
+                      style: TextStyle(
+                          fontSize: 48,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [_boton('7'), _boton('8'), _boton('9'), _boton('/')],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [_boton('4'), _boton('5'), _boton('6'), _boton('*')],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [_boton('1'), _boton('2'), _boton('3'), _boton('-')],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [_boton('0'), _boton('c'), _boton('='), _boton('+')],
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [_boton('7'), _boton('8'), _boton('9'), _boton('/')],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [_boton('4'), _boton('5'), _boton('6'), _boton('*')],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [_boton('1'), _boton('2'), _boton('3'), _boton('-')],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [_boton('0'), _boton('c'), _boton('='), _boton('+')],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+}
 }
